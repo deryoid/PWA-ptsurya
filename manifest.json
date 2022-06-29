@@ -1,0 +1,38 @@
+
+{
+    "name": "PT SURYA SATYA TIMUR",
+    "short_name": "PT SURYA",
+    "theme_color": "#55A846",
+    "background_color": "#55A846",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/ptsurya",
+    "description": "PT SURYA PENDATAAN",
+    "orientation": "any",
+    "icons": [
+        {
+            "src": "android-launchericon-48-48",
+            "sizes": "48x48"
+        },
+        {
+            "src": "android-launchericon-72-72",
+            "sizes": "72x72"
+        },
+        {
+            "src": "android-launchericon-96-96",
+            "sizes": "96x96"
+        },
+        {
+            "src": "android-launchericon-144-144",
+            "sizes": "144x144"
+        },
+        {
+            "src": "android-launchericon-192-192",
+            "sizes": "192x192"
+        },
+        {
+            "src": "android-launchericon-512-512",
+            "sizes": "512x512"
+        }
+    ]
+}
