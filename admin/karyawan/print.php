@@ -74,6 +74,7 @@ $bln = array(
                             <th>Hp</th>
                             <th>Bidang</th>
                             <th>Jabatan</th>
+                            <th>Gaji</th>
                         </tr>
                     </thead>
 
@@ -95,6 +96,7 @@ $bln = array(
                             <td><?= $row['hp'] ?></td>
                             <td><?= $row['bidang'] ?></td>
                             <td><?= $row['jabatan'] ?></td>
+                            <td><?= $row['gaji_karyawan'] ?></td>
                         </tr>
                     <?php } ?>
                     </tbody>

@@ -22,7 +22,7 @@
               echo "Pimpinan";
             } elseif ($_SESSION['role'] == "User") {
               echo "User";
-            } 
+            }
             ?>
           </i>
         </a>
@@ -71,11 +71,26 @@
               </p>
             </a>
           </li>
-          
-
 
           <div class="dropdown-divider"></div>
-          
+          <li class="nav-item">
+            <a href="<?= base_url('admin/rekapabsen') ?>" class="nav-link">
+              <i class="nav-icon fas fa-user-alt"></i>
+              <p>
+                Rekap Absen
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= base_url('admin/gaji') ?>" class="nav-link">
+              <i class="nav-icon fas fa-money-bill"></i>
+              <p>
+                Gaji Pegawai
+              </p>
+            </a>
+          </li>
+          <div class="dropdown-divider"></div>
+
           <li class="nav-item">
             <a href="<?= base_url('admin/pemesanan') ?>" class="nav-link">
               <i class="nav-icon fas fa-tasks"></i>
@@ -84,14 +99,14 @@
               </p>
             </a>
           </li>
-         
+
           <div class="dropdown-divider"></div>
 
           <li class="nav-item">
             <a href="<?= base_url('admin/pemasukan/') ?>" class="nav-link">
               <i class="nav-icon fas fa-spinner"></i>
               <p>
-               Pemasukkan
+                Pemasukkan
               </p>
             </a>
           </li>
@@ -160,11 +175,11 @@
               </p>
             </a>
           </li>
-          
+
 
 
           <div class="dropdown-divider"></div>
-          
+
           <li class="nav-item">
             <a href="<?= base_url('pimpinan/pemesanan') ?>" class="nav-link">
               <i class="nav-icon fas fa-tasks"></i>
@@ -173,7 +188,7 @@
               </p>
             </a>
           </li>
-         
+
           <div class="dropdown-divider"></div>
 
           <li class="nav-item">
@@ -201,18 +216,18 @@
               </p>
             </a>
           </li>
-          
+
           <div class="dropdown-divider"></div>
-          
+
           <li class="nav-item">
-            <a href="<?= base_url('pimpinan/printrekap') ?>"  target="blank" class="nav-link">
+            <a href="<?= base_url('pimpinan/printrekap') ?>" target="blank" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Rekap Data Keseluruhan
               </p>
             </a>
           </li>
-          
+
 
         </ul>
       </nav>
@@ -252,33 +267,33 @@
 </aside>
 
 
-        <!-- MODAL FILTER CETAK -->
-        <div class="modal fade" id="modal-cetakarus">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h4 class="modal-title">Filter Cetak Laporan</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <form action="<?= base_url('admin/printhasil') ?>" target="blank" method="POST">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Tanggal</label>
-                            <div class="col-sm-12">
-                              <input type="date" name="tglmulai" class="form-control">
-                                <input type="date" name="tglselesai" class="form-control">
-                              </div>
-                        </div>
-                   </div>
-                    <div class="modal-footer justify-content-center">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-print"> Cetak</i></button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"> Tutup</i></button>
-                    </div>
-                </form>
+<!-- MODAL FILTER CETAK -->
+<div class="modal fade" id="modal-cetakarus">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Filter Cetak Laporan</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="<?= base_url('admin/printhasil') ?>" target="blank" method="POST">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Tanggal</label>
+            <div class="col-sm-12">
+              <input type="date" name="tglmulai" class="form-control">
+              <input type="date" name="tglselesai" class="form-control">
             </div>
-            <!-- /.modal-content -->
-            </div>
+          </div>
         </div>
-    <!-- /.modal-dialog -->
+        <div class="modal-footer justify-content-center">
+          <button type="submit" class="btn btn-primary"><i class="fa fa-print"> Cetak</i></button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"> Tutup</i></button>
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+</div>
+<!-- /.modal-dialog -->

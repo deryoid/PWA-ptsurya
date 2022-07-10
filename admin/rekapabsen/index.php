@@ -30,12 +30,12 @@ include '../../templates/head.php';
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Karyawan</h1>
+                            <h1 class="m-0 text-dark">Rekap Absen</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Karyawan</li>
+                                <li class="breadcrumb-item active">Rekap Absen</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -71,42 +71,40 @@ include '../../templates/head.php';
                                             <thead class="bg-green">
                                                 <tr align="center">
                                                     <th>No</th>
-                                                    <th>Nama Karyawan</th>
-                                                    <th>Jenis Kelamin</th>
-                                                    <th>TTL</th>
-                                                    <th>Agama</th>
-                                                    <th>Pendidikan</th>
-                                                    <th>Jurusan</th>
-                                                    <th>Alamat</th>
-                                                    <th>Hp</th>
-                                                    <th>Bidang</th>
-                                                    <th>Jabatan</th>
-                                                    <th>Gaji</th>
+                                                    <th>Karyawan</th>
+                                                    <th>Periode</th>
+                                                    <th>Absensi</th>
                                                     <th>Opsi</th>
                                                 </tr>
                                             </thead>
                                             <?php
                                             $no = 1;
-                                            $data = $koneksi->query("SELECT * FROM karyawan ORDER BY id_karyawan DESC");
+                                            $data = $koneksi->query("SELECT * FROM rekapabsen AS ra
+                                            LEFT JOIN karyawan AS k ON ra.id_karyawan = k.id_karyawan
+                                            ORDER BY ra.id_rekap DESC");
                                             while ($row = $data->fetch_array()) {
                                             ?>
                                                 <tbody style="background-color: azure">
                                                     <tr>
                                                         <td align="center"><?= $no++ ?></td>
-                                                        <td><?= $row['nama_karyawan'] ?></td>
-                                                        <td><?= $row['jk'] ?></td>
-                                                        <td><?= $row['tempat_lahir'] . ', ' . tgl_indo($row['tgl_lahir']) ?></td>
-                                                        <td><?= $row['agama'] ?></td>
-                                                        <td><?= $row['pendidikan'] ?></td>
-                                                        <td><?= $row['jurusan'] ?></td>
-                                                        <td><?= $row['alamat'] ?></td>
-                                                        <td><?= $row['hp'] ?></td>
-                                                        <td><?= $row['bidang'] ?></td>
-                                                        <td><?= $row['jabatan'] ?></td>
-                                                        <td><?= rupiah($row['gaji_karyawan']) ?></td>
+                                                        <td>
+                                                            Nama Karyawan : <?= $row['nama_karyawan'] ?><br>
+                                                            Bidang : <?= $row['bidang'] ?><br>
+                                                            Jabatan : <?= $row['jabatan'] ?><br>
+                                                            Gaji Pokok : <?= rupiah($row['gaji_karyawan']) ?>
+                                                        </td>
+                                                        <td>
+                                                            Bulan : <?= $row['bulan'] ?><br>
+                                                            Tahun : <?= $row['tahun'] ?><br>
+                                                        </td>
+                                                        <td>
+                                                            Total Hadir : <?= $row['jumlah_hadir'] ?><br>
+                                                            Total Alpa : <?= $row['jumlah_alpa'] ?><br>
+                                                            Total Ijin/Sakit : <?= $row['jumlah_ijin_sakit'] ?><br>
+                                                        </td>
                                                         <td align="center">
-                                                            <a href="edit?id=<?= $row['id_karyawan'] ?>" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i></a>
-                                                            <a href="hapus?id=<?= $row['id_karyawan'] ?>" class="btn btn-danger btn-sm alert-hapus" title="Hapus"><i class="fa fa-trash"></i></a>
+                                                           
+                                                            <a href="hapus?id=<?= $row['id_rekap'] ?>" class="btn btn-danger btn-sm alert-hapus" title="Hapus"><i class="fa fa-trash"> Hapus Rekap Absen</i></a>
                                                         </td>
                                                     </tr>
                                                 </tbody>

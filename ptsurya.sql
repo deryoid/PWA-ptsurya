@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Waktu pembuatan: 28 Jun 2022 pada 10.12
+-- Waktu pembuatan: 10 Jul 2022 pada 15.18
 -- Versi server: 5.7.34
 -- Versi PHP: 7.4.21
 
@@ -51,7 +51,7 @@ INSERT INTO `detail_pemesanan` (`id_dp`, `id_pemesanan`, `id_katalog`, `jumlah`,
 
 CREATE TABLE `karyawan` (
   `id_karyawan` int(11) NOT NULL,
-  `nama_karyawan` varchar(150) NOT NULL,
+  `nama_karyawan` varchar(150) DEFAULT NULL,
   `jk` varchar(15) DEFAULT NULL,
   `tempat_lahir` varchar(50) DEFAULT NULL,
   `tgl_lahir` date DEFAULT NULL,
@@ -60,16 +60,17 @@ CREATE TABLE `karyawan` (
   `jurusan` varchar(100) DEFAULT NULL,
   `alamat` text,
   `hp` varchar(15) DEFAULT NULL,
-  `bidang` varchar(150) NOT NULL,
-  `jabatan` varchar(100) DEFAULT NULL
+  `bidang` varchar(150) DEFAULT NULL,
+  `jabatan` varchar(100) DEFAULT NULL,
+  `gaji_karyawan` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data untuk tabel `karyawan`
 --
 
-INSERT INTO `karyawan` (`id_karyawan`, `nama_karyawan`, `jk`, `tempat_lahir`, `tgl_lahir`, `agama`, `pendidikan`, `jurusan`, `alamat`, `hp`, `bidang`, `jabatan`) VALUES
-(1, 'Alfianoor', 'Laki-laki', 'Banjarmasin', '1990-12-31', 'Islam', 'S1', 'TI', 'Banjarmasin', '0979868756755', 'Design', 'ASDAFA');
+INSERT INTO `karyawan` (`id_karyawan`, `nama_karyawan`, `jk`, `tempat_lahir`, `tgl_lahir`, `agama`, `pendidikan`, `jurusan`, `alamat`, `hp`, `bidang`, `jabatan`, `gaji_karyawan`) VALUES
+(2, 'Hamzah Akhmad', 'Laki-laki', 'Banjarmasin', '1997-09-09', 'Islam', 'SMA', '-', 'Banjarmasin', '089777738299', 'Teknis', 'Design', '3500000');
 
 -- --------------------------------------------------------
 
@@ -165,6 +166,29 @@ INSERT INTO `pengeluaran` (`id_pengeluaran`, `nama_pengeluaran`, `tanggal_pengel
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `rekapabsen`
+--
+
+CREATE TABLE `rekapabsen` (
+  `id_rekap` int(11) NOT NULL,
+  `id_karyawan` int(11) NOT NULL,
+  `bulan` varchar(100) NOT NULL,
+  `tahun` varchar(100) NOT NULL,
+  `jumlah_hadir` int(22) NOT NULL,
+  `jumlah_alpa` int(22) NOT NULL,
+  `jumlah_ijin_sakit` int(22) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `rekapabsen`
+--
+
+INSERT INTO `rekapabsen` (`id_rekap`, `id_karyawan`, `bulan`, `tahun`, `jumlah_hadir`, `jumlah_alpa`, `jumlah_ijin_sakit`) VALUES
+(1, 2, 'Juli', '2022', 26, 4, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `user`
 --
 
@@ -226,6 +250,13 @@ ALTER TABLE `pengeluaran`
   ADD PRIMARY KEY (`id_pengeluaran`);
 
 --
+-- Indeks untuk tabel `rekapabsen`
+--
+ALTER TABLE `rekapabsen`
+  ADD PRIMARY KEY (`id_rekap`),
+  ADD KEY `id_karyawan` (`id_karyawan`);
+
+--
 -- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
@@ -245,7 +276,7 @@ ALTER TABLE `detail_pemesanan`
 -- AUTO_INCREMENT untuk tabel `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `katalog`
@@ -264,6 +295,12 @@ ALTER TABLE `pemesanan`
 --
 ALTER TABLE `pengeluaran`
   MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `rekapabsen`
+--
+ALTER TABLE `rekapabsen`
+  MODIFY `id_rekap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

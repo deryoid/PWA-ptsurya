@@ -32,7 +32,7 @@ include 'templates_public/head.php';
     <!--- Navbar Top -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #55A846; width:100%;">
       <div class="container-fluid">
-        <img src="<?= base_url(); ?>/assets/dist/img/logo-surya.jpeg" class="mr-3" style="width: 30px;" alt="">
+        <img src="<?= base_url(); ?>/assets/dist/img/logo-surya.jpeg"  class="mr-3" style="width: 30px;" alt="">
         <a class="navbar-brand" href="index" style="color: white;">PT. SURYA SATRIA TIMUR</a>
 
         <div class="collapse navbar-collapse" id="navbarScroll">
@@ -98,7 +98,7 @@ include 'templates_public/head.php';
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
           <div class="row">
-            <div class="card mt-2 mb-2 text-center">
+            <div class="card col-12 mt-2 mb-2 text-center">
               <h1 class="m-0 text-dark">PT SURYA SATRIA UTAMA</h1>
               <img src="<?= base_url(); ?>/assets/dist/img/logo-surya.png" width="100%" alt="">
               <a href="login" class="btn btn-sm btn-block bg-green"><i class="fas fa-sign-in-alt">Login</i></a>
