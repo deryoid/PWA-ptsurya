@@ -102,14 +102,14 @@ $bln = array(
 
     </div>
     <div style="text-align: center; display: inline-block; float: right;">
-  <h5>
-    Banjarmasin <?php echo tgl_indo(date('Y-m-d')); ?><br>
-    
-    <br><br><br><br>
-    Istana Print
-  </h5>
+        <h5>
+            Banjarmasin <?php echo tgl_indo(date('Y-m-d')); ?><br>
 
-</div>
+            <br><br><br><br>
+
+        </h5>
+
+    </div>
 
 </body>
 

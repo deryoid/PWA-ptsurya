@@ -30,55 +30,65 @@ $bln = array(
 <head>
     <title>LAPORAN DATA </title>
 </head>
+<img src="<?= base_url('assets/dist/img/logo-surya.png') ?>" align="left" width="90" height="90">
+<img src="<?= base_url('assets/dist/img/blank.jpg') ?>" align="right" width="90" height="90">
+<p align="center"><b>
+        <font size="7">PT. Surya Satrya Timur</font><br>
+        <font size="4">
+            Jalan Ir. H. Pangeran Muhammad Noor No.99, Kuin Cerucuk, Kec. Banjarmasin Bar.,<br>
+            Kota Banjarmasin, Kalimantan Selatan 70128
+        </font>
+        <hr size="2px" color="black">
+    </b></p>
 
 <body>
-  Cetak : <?= $_SESSION['username'] ?>
-  <div style="float: right;">
-    Tanggal Cetak :
-    <?= tgl_indo(date('Y-m-d')) ?> <br>
-    Halaman : 1
-  </div>
+    Cetak : <?= $_SESSION['username'] ?>
+    <div style="float: right;">
+        Tanggal Cetak :
+        <?= tgl_indo(date('Y-m-d')) ?> <br>
+        Halaman : 1
+    </div>
 
-  <br>
-  <h3 style="text-align: center;">Laporan Daftar Pemesanan</h3>
-  
-                <table border="1" cellspacing="0" width="100%">
-                    <thead>
-                        <tr align="center">
-                            <th>No</th>
-                            <th>Tanggal Pesananan</th>
-                            <th>Nama Pelanggan</th>
-                        </tr>
-                    </thead>
+    <br>
+    <h3 style="text-align: center;">Laporan Daftar Pemesanan</h3>
 
-                    <tbody>
-                    <?php
-                        $no = 1;
-                        $data = $koneksi->query("SELECT * FROM pemesanan AS p
+    <table border="1" cellspacing="0" width="100%">
+        <thead>
+            <tr align="center">
+                <th>No</th>
+                <th>Tanggal Pesananan</th>
+                <th>Nama Pelanggan</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php
+            $no = 1;
+            $data = $koneksi->query("SELECT * FROM pemesanan AS p
                         LEFT JOIN pelanggan AS pl ON p.id_pelanggan = pl.id_pelanggan  ORDER BY id_pemesanan DESC");
-                        while ($row = $data->fetch_array()) {
-                    ?>
-                        <tr align="center">
-                        <td><?= $no++;?></td>
-                        <td><?= tgl_indo($row['tanggal_pesan']) ?></td>
-                        <td><?= $row['nama_pelanggan'] ?></td>
-                        </tr>
-                    <?php } ?>
-                    </tbody>
-                </table>
+            while ($row = $data->fetch_array()) {
+            ?>
+                <tr align="center">
+                    <td><?= $no++; ?></td>
+                    <td><?= tgl_indo($row['tanggal_pesan']) ?></td>
+                    <td><?= $row['nama_pelanggan'] ?></td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
     <br>
 
     </div>
 
     </div>
     <div style="text-align: center; display: inline-block; float: right;">
-  <h5>
-    Banjarmasin <?php echo tgl_indo(date('Y-m-d')); ?><br>
-    
-    <br><br><br><br>
-  </h5>
-
-</div>
+        <h5>
+            Banjarmasin <?php echo tgl_indo(date('Y-m-d')); ?><br>
+            Pimpinan
+            <br><br><br>
+            <u>Sumatyo Ahmad, S.E</u>
+        </h5>
+    </div>
 
 </body>
 

@@ -82,14 +82,13 @@ $bln = array(
 
     </div>
     <div style="text-align: center; display: inline-block; float: right;">
-  <h5>
-    Banjarmasin <?php echo tgl_indo(date('Y-m-d')); ?><br>
-    
-    <br><br><br><br>
-    Istana Print
-  </h5>
-
-</div>
+        <h5>
+            Banjarmasin <?php echo tgl_indo(date('Y-m-d')); ?><br>
+            Pimpinan
+            <br><br><br>
+            <u>Sumatyo Ahmad, S.E</u>
+        </h5>
+    </div>
 
 </body>
 

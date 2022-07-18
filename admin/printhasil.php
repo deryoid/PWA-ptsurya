@@ -2,7 +2,7 @@
 include '../config/config.php';
 include '../config/koneksi.php';
 
-$no =1;
+$no = 1;
 $tglmulai   = $_POST['tglmulai'];
 $tglselesai = $_POST['tglselesai'];
 $bln = array(
@@ -28,6 +28,16 @@ $bln = array(
 
 <!DOCTYPE html>
 <html>
+<img src="<?= base_url('assets/dist/img/logo-surya.png') ?>" align="left" width="90" height="90">
+<img src="<?= base_url('assets/dist/img/blank.jpg') ?>" align="right" width="90" height="90">
+<p align="center"><b>
+        <font size="7">PT. Surya Satrya Timur</font><br>
+        <font size="4">
+            Jalan Ir. H. Pangeran Muhammad Noor No.99, Kuin Cerucuk, Kec. Banjarmasin Bar.,<br>
+            Kota Banjarmasin, Kalimantan Selatan 70128
+        </font>
+        <hr size="2px" color="black">
+    </b></p>
 
 <head>
     <title>LAPORAN DATA </title>
@@ -37,19 +47,19 @@ $bln = array(
 
 
     Cetak : <?= $_SESSION['username'] ?><br>
-    Laporan Dari : <?= tgl_indo($tglmulai) ?> S/d <?= tgl_indo($tglselesai) ?> 
+    Laporan Dari : <?= tgl_indo($tglmulai) ?> S/d <?= tgl_indo($tglselesai) ?>
     <div style="float: right;">
         Tanggal Cetak :
         <?= tgl_indo(date('Y-m-d')) ?> <br>
         Halaman : 1
     </div>
-    
-  <br>
-  <h3 style="text-align: center;">Laporan Arus Kas</h3>
-  <h4 style="text-align: left;">Pemasukkan</h4>
+
+    <br>
+    <h3 style="text-align: center;">Laporan Arus Kas</h3>
+    <h4 style="text-align: left;">Pemasukkan</h4>
     <div class="row">
         <div class="col-sm-12">
-        <table border="1" cellspacing="0" width="100%">
+            <table border="1" cellspacing="0" width="100%">
                 <thead>
                     <tr align="center">
                         <th>No</th>
@@ -63,17 +73,17 @@ $bln = array(
                         <th>Total</th>
                     </tr>
                 </thead>
-                    <tbody style="background-color: azure">
-                <?php
-                $no = 1;
-                $data = $koneksi->query("SELECT * FROM detail_pemesanan AS dp
+                <tbody style="background-color: azure">
+                    <?php
+                    $no = 1;
+                    $data = $koneksi->query("SELECT * FROM detail_pemesanan AS dp
                 LEFT JOIN pemesanan AS p ON dp.id_pemesanan = p.id_pemesanan
                 LEFT JOIN katalog AS k ON dp.id_katalog = k.id_katalog
                 LEFT JOIN pelanggan AS pel ON p.id_pelanggan = pel.id_pelanggan
                 WHERE (tanggal_pesan BETWEEN '$tglmulai' AND '$tglselesai')
                 ");
-                while ($row = $data->fetch_array()) {
-                ?>
+                    while ($row = $data->fetch_array()) {
+                    ?>
                         <tr>
                             <td align="center"><?= $no++ ?></td>
                             <td><?= $row['nama_pelanggan'] ?></td>
@@ -84,26 +94,27 @@ $bln = array(
                             <td><?= $row['harga'] ?></td>
                             <td><?= $row['jumlah'] ?></td>
                             <td><?= $row['total'] ?></td>
-                            
+
                         </tr>
-                <?php } ?>
-                    </tbody>
-            <tfoot>
-                <tr>
-                    <th colspan="8" style="text-align:right;">Jumlah :</th>
-                    <th> <?php $tot = $koneksi->query("SELECT SUM(total) AS totalsel FROM detail_pemesanan AS
+                    <?php } ?>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="8" style="text-align:right;">Jumlah :</th>
+                        <th> <?php $tot = $koneksi->query("SELECT SUM(total) AS totalsel FROM detail_pemesanan AS
                     dp LEFT JOIN pemesanan AS p ON dp.id_pemesanan = p.id_pemesanan
-                     WHERE (p.tanggal_pesan BETWEEN '$tglmulai' AND '$tglselesai')")->fetch_array(); echo  $tot['totalsel']; ?></th>
-                </tr>
-            </tfoot>
-                </table>
+                     WHERE (p.tanggal_pesan BETWEEN '$tglmulai' AND '$tglselesai')")->fetch_array();
+                                echo  $tot['totalsel']; ?></th>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
         <br>
         <hr>
         <br>
         <h4 style="text-align: left;">Pengeluaran</h4>
         <div class="col-sm-12">
-        <table border="1" cellspacing="0" width="100%">
+            <table border="1" cellspacing="0" width="100%">
                 <thead>
                     <tr align="center">
                         <th>No</th>
@@ -112,54 +123,54 @@ $bln = array(
                         <th>Total Pengeluaran</th>
                     </tr>
                 </thead>
-                    <tbody style="background-color: azure">
-                <?php
-                $no = 1;
-                $data = $koneksi->query("SELECT * FROM pengeluaran 
+                <tbody style="background-color: azure">
+                    <?php
+                    $no = 1;
+                    $data = $koneksi->query("SELECT * FROM pengeluaran 
                 WHERE (tanggal_pengeluaran BETWEEN '$tglmulai' AND '$tglselesai')
                 ");
-                while ($row = $data->fetch_array()) {
-                ?>
+                    while ($row = $data->fetch_array()) {
+                    ?>
                         <tr>
                             <td align="center"><?= $no++ ?></td>
                             <td><?= $row['nama_pengeluaran'] ?></td>
-                        <td><?= tgl_indo($row['tanggal_pengeluaran']) ?></td>
-                        <td><?= $row['total_pengeluaran'] ?></td>
-                            
+                            <td><?= tgl_indo($row['tanggal_pengeluaran']) ?></td>
+                            <td><?= $row['total_pengeluaran'] ?></td>
+
                         </tr>
-                <?php } ?>
-                    </tbody>
-                    <tfoot>
-                <tr>
-                    <th colspan="3" style="text-align:right;">Jumlah :</th>
-                    <th> <?php $totpeng = $koneksi->query("SELECT SUM(total_pengeluaran) AS totalpel FROM pengeluaran WHERE (tanggal_pengeluaran BETWEEN '$tglmulai' AND '$tglselesai')")->fetch_array(); echo  $totpeng['totalpel']; ?></th>
-                </tr>
-            </tfoot>
-                </table>
+                    <?php } ?>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="3" style="text-align:right;">Jumlah :</th>
+                        <th> <?php $totpeng = $koneksi->query("SELECT SUM(total_pengeluaran) AS totalpel FROM pengeluaran WHERE (tanggal_pengeluaran BETWEEN '$tglmulai' AND '$tglselesai')")->fetch_array();
+                                echo  $totpeng['totalpel']; ?></th>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
     </div>
     <br>
     <h2> Keuntungan :
-    <b><?php  
-                    $untung = $tot['totalsel'] - $totpeng['totalpel'] ; 
-                    echo $untung; ?></b></h2>
-    
-                
+        <b><?php
+            $untung = $tot['totalsel'] - $totpeng['totalpel'];
+            echo $untung; ?></b>
+    </h2>
+
+
 
     </div>
 
     </div>
-    <div style="text-align: center; display: inline-block; float: right;">
-    
-    <div style="text-align: center; display: inline-block; float: right;">
-  <h5>
-    Banjarmasin <?php echo tgl_indo(date('Y-m-d')); ?><br>
-    
-    <!-- <br><br><br><br>
-    Istana Print -->
-  </h5>
-</div>
 
+    <div style="text-align: center; display: inline-block; float: right;">
+        <h5>
+            Banjarmasin <?php echo tgl_indo(date('Y-m-d')); ?><br>
+            Pimpinan
+            <br><br><br>
+            <u>Sumatyo Ahmad, S.E</u>
+        </h5>
+    </div>
 </body>
 
 </html>

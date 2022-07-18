@@ -32,56 +32,55 @@ $bln = array(
 </head>
 
 <body>
-<!-- <img src="<?=base_url('assets/dist/img/istana-print.png')?>" align="left" width="90" height="90">
-<img src="<?=base_url('assets/dist/img/blank.jpg')?>" align="right" width="90" height="90">
-  <p align="center"><b>
-    <font size="5">ISTANA PRINT</font><br>
-    <font size="3">
-        Jl. Bridgen H. Hasan Basri, kayutangi (Samping ALFAMART) <br>
-        Telp : 0812 5834 9128 - 0858 2821 1851 <br>
-        Email : istanaprintkayutangi@gmail.com
-    </font>
-    <hr size="2px" color="black">
-  </b></p> -->
+    <img src="<?= base_url('assets/dist/img/logo-surya.png') ?>" align="left" width="90" height="90">
+    <img src="<?= base_url('assets/dist/img/blank.jpg') ?>" align="right" width="90" height="90">
+    <p align="center"><b>
+            <font size="7">PT. Surya Satrya Timur</font><br>
+            <font size="4">
+                Jalan Ir. H. Pangeran Muhammad Noor No.99, Kuin Cerucuk, Kec. Banjarmasin Bar.,<br>
+                Kota Banjarmasin, Kalimantan Selatan 70128
+            </font>
+            <hr size="2px" color="black">
+        </b></p>
 
-  Cetak : <?= $_SESSION['username'] ?>
-  <div style="float: right;">
-    Tanggal Cetak :
-    <?= tgl_indo(date('Y-m-d')) ?> <br>
-    Halaman : 1
-  </div>
+    Cetak : <?= $_SESSION['username'] ?>
+    <div style="float: right;">
+        Tanggal Cetak :
+        <?= tgl_indo(date('Y-m-d')) ?> <br>
+        Halaman : 1
+    </div>
 
-  <br>
-  <h3 style="text-align: center;">Laporan Data Pelanggan</h3>
+    <br>
+    <h3 style="text-align: center;">Laporan Data Pelanggan</h3>
 
     <div class="row">
         <div class="col-sm-12">
             <div class="card-box table-responsive">
                 <table border="1" cellspacing="0" width="100%">
-                <thead class="bg-red">
-                    <tr align="center">
-                        <th>No</th>
-                        <th>ID Pelanggan</th>
-                        <th>Nama Pelanggan</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Alamat</th>
-                        <th>No Hp</th>
-                    </tr>
-                </thead>
+                    <thead class="bg-red">
+                        <tr align="center">
+                            <th>No</th>
+                            <th>ID Pelanggan</th>
+                            <th>Nama Pelanggan</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Alamat</th>
+                            <th>No Hp</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         <?php
                         $no = 1;
                         $data = $koneksi->query("SELECT * FROM pelanggan ORDER BY id_pelanggan DESC");
                         while ($row = $data->fetch_array()) {
                         ?>
-                        <tr>
-                            <td align="center"><?= $no++ ?></td>
-                            <td align="center"><?= $row['id_pelanggan'] ?></td>
-                            <td><?= $row['nama_pelanggan'] ?></td>
-                            <td align="center"><?= $row['jk'] ?></td>
-                            <td><?= $row['alamat'] ?></td>
-                            <td align="center"><?= $row['no_hp'] ?></td>
-                        </tr>
+                            <tr>
+                                <td align="center"><?= $no++ ?></td>
+                                <td align="center"><?= $row['id_pelanggan'] ?></td>
+                                <td><?= $row['nama_pelanggan'] ?></td>
+                                <td align="center"><?= $row['jk'] ?></td>
+                                <td><?= $row['alamat'] ?></td>
+                                <td align="center"><?= $row['no_hp'] ?></td>
+                            </tr>
                         <?php } ?>
                     </tbody>
                 </table>
@@ -95,13 +94,13 @@ $bln = array(
 
     </div>
     <div style="text-align: center; display: inline-block; float: right;">
-  <h5>
-    Banjarmasin <?php echo tgl_indo(date('Y-m-d')); ?><br>
-    
-    <br><br><br><br>
-  </h5>
-
-</div>
+        <h5>
+            Banjarmasin <?php echo tgl_indo(date('Y-m-d')); ?><br>
+            Pimpinan
+            <br><br><br>
+            <u>Sumatyo Ahmad, S.E</u>
+        </h5>
+    </div>
 
 </body>
 
